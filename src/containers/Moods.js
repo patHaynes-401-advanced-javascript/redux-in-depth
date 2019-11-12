@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Controls from '../components/controls/Controls';
 import Face from '../components/face/Face';
+import { updateCoffee, updateSnack, updateNap, updateStudy } from '../actions/moodsActions';
+import { getCoffee, getSnack, getNap, getStudy } from '../selectors/moodsSelectors';
 
 export const isTired = state => state.coffees < 1 && state.naps < 1;
 export const isHyper = state => state.coffees > 3;
@@ -21,7 +23,7 @@ export const getFace = state => {
 
 const actions = [
   { name: 'DRINK_COFFEE', text: 'Drink Coffee', stateName: 'coffees' },
-  { name: 'EAT_SNACK', text: 'Snack', stateName: 'snacks' },
+  { name: 'EAT_SNACKS', text: 'Snack', stateName: 'snacks' },
   { name: 'TAKE_NAP', text: 'Nap', stateName: 'naps' },
   { name: 'STUDY', text: 'Study', stateName: 'studies' },
 ];
@@ -35,15 +37,20 @@ const Moods = ({ actions, emoji, handleSelection }) => (
 );
 
 const mapStateToProps = state => ({
-  actions: actions.map(action => ({ ...action, count: state[action.stateName] })),
-  emoji: getFace(state)
+  actions: actions.map(action => ({ ...action, count: state.moodsReducer[action.stateName] })),
+  emoji: getFace(state.moodsReducer)
 });
+
+const moodsMethod = {
+  DRINK_COFFEE: updateCoffee,
+  EAT_SNACKS: updateSnack,
+  TAKE_NAP: updateNap,
+  STUDY: updateStudy
+};
 
 const mapDispatchToProps = dispatch => ({
   handleSelection(name) {
-    dispatch({
-      type: name
-    });
+    dispatch(moodsMethod[name]({}));
   }
 });
 

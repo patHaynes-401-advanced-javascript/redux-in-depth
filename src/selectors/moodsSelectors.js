@@ -15,7 +15,6 @@ export const getActions = state => [
 export const getFace = state => {
   if(isTired(state) && isHungry(state)) return '🤬';
   if(isHyper(state) && isHungry(state)) return '🤮';
-  if(isEducated(state) && isWizard(state)) return '🧙🏼‍♂';
   if(isTired(state)) return '😴';
   if(isHyper(state)) return '🙀';
   if(isEducated(state)) return '🤯';
@@ -28,4 +27,3 @@ export const isTired = state => getCoffee(state) < 1 && getNap(state) < 1;
 export const isHyper = state => getCoffee(state) > 3;
 export const isEducated = state => getStudy(state) > 2;
 export const isHungry = state => getSnack(state) < 1;
-export const isWizard = state => getStudy(state) > 20;

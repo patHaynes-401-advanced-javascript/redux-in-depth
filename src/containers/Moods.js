@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Controls from '../components/controls/Controls';
 import Face from '../components/face/Face';
-import { updateCoffee, updateSnack, updateNap, updateStudy } from '../actions/moodsActions';
+import { updateCoffee, updateSnack, updateNap, updateStudy, updateReset } from '../actions/moodsActions';
 import { getActions, getFace } from '../selectors/moodsSelectors';
 
 
@@ -23,7 +23,8 @@ const moodsMethod = {
   DRINK_COFFEE: updateCoffee,
   EAT_SNACKS: updateSnack,
   TAKE_NAP: updateNap,
-  STUDY: updateStudy
+  STUDY: updateStudy,
+  RESET: updateReset
 };
 
 const mapDispatchToProps = dispatch => ({

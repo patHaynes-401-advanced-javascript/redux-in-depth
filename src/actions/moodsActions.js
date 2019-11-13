@@ -22,4 +22,8 @@ export const updateStudy = mood => ({
   payload: mood
 });
 
-
+export const RESET = 'RESET';
+export const updateReset = mood => ({
+  type: RESET,
+  payload: mood
+});

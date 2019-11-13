@@ -1,0 +1,13 @@
+.Controls {
+  text-align: center;
+  margin-top: 100px;
+  button {
+    padding: 0.4rem;
+    margin: 0 0.4rem;
+
+    border:none;
+
+    background-color: #0198E1;
+    color: #FFFFFF;
+  }
+}
